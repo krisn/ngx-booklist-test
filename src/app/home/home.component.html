@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-card>
+    <p>
+      <img class="logo" src="assets/book-logo.jpg" alt="book logo"/>
+    </p>
+    <mat-card-content>
+      <mat-card-title translate>Add New Book</mat-card-title>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Title" [formControl]="newTitle" required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-select placeholder="Category" [formControl]="newCategory" required>
+          <mat-option *ngFor="let cat of categories" [value]="cat.value">
+            {{cat.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description" [formControl]="newDescription" required></textarea>
+      </mat-form-field>
+      <div class="button-row">
+        <button mat-flat-button color="primary" (click)="add()"><span translate>Add</span></button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title><span translate>Book List</span> ({{bookCount}})</mat-card-title>
+      <mat-list class="left-align">
+        <mat-list-item *ngFor="let book of books">
+          <mat-icon mat-list-icon>book</mat-icon>
+          <h4 mat-line>{{book.name}} ({{book.category}})</h4>
+          <p mat-line class="description-text"> {{book.description}} </p>
+          <button mat-icon-button class="delete-icon" (click)="del(book)"><mat-icon >delete</mat-icon></button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
