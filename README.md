@@ -1,4 +1,4 @@
-# Tabcorp Test
+# Booklist Test App
 
 Single Page Application (SPA) in Angular for entering book details and adding them to a book list.
 
